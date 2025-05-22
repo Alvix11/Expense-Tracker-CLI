@@ -31,11 +31,20 @@ def is_text(args):
     except ValueError:
         return True
 
-def is_number(args):
+def is_positive(args, mode=""):
     '''Function to verify that the expense passed by the user is not negative number.'''
-    num = args.amount
-    if num < 0:
-        print("You cannot add negative amounts")
-        return False
-    else:
-        return True
+    if mode == "amount":
+        num = args.amount
+        if num < 0:
+            print("You cannot add negative amounts")
+            return False
+        else:
+            return True
+        
+    if mode == "id":
+        num = args.id
+        if num < 0:
+            print("There are no expenses with negative ids")
+            return False
+        else:
+            return True
