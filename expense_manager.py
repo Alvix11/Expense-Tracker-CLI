@@ -1,4 +1,4 @@
-from helpers import load_expense, save_expense, is_text, is_number
+from helpers import load_expense, save_expense, is_text, is_positive
 from utils import actual_date_and_time
 from settings import FILE_PATH
 
@@ -12,7 +12,7 @@ class ExpenseManager:
         data = load_expense(self.file_path)
         present_date = actual_date_and_time()
 
-        if is_text(args) and is_number(args):
+        if is_text(args) and is_positive(args, mode="amount"):
 
             if data:
                 id = max(map(int, data.keys())) + 1
@@ -38,12 +38,13 @@ class ExpenseManager:
         data = load_expense(self.file_path)
 
         if data:
-            if str(args.id) in data:
-                del data[str(args.id)] # Delete expense
-                save_expense(self.file_path, data)
-                print(f"Expense successfully eliminated id: {args.id}")
-            else:
-                print(f"There are no expenses with the id: {args.id}")        
+            if is_positive(args, mode="id"):
+                if str(args.id) in data:
+                    del data[str(args.id)] # Delete expense
+                    save_expense(self.file_path, data)
+                    print(f"Expense successfully eliminated id: {args.id}")
+                else:
+                    print(f"There are no expenses with the id: {args.id}")        
         else:
             print("There are no expenses to delete")
     
