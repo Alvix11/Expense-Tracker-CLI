@@ -10,7 +10,7 @@ if args.command == "add":
 elif args.command == "list":
     expense.list_expenses()
 elif args.command == "delete":
-    print("eliminar")
+    expense.delete_expense(args)
 elif args.command == "summary":
     if args.month:
         print(f"sumar mes {args.month}")
