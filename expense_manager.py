@@ -13,7 +13,7 @@ class ExpenseManager:
         present_date = actual_date_and_time()
 
         if is_text(args) and is_number(args):
-            
+
             if data:
                 id = max(map(int, data.keys())) + 1
                 data[str(id)] = {
@@ -32,6 +32,20 @@ class ExpenseManager:
                 }
                 save_expense(self.file_path, datas)
                 print(f"Expense created with id: {id}")
+
+    def delete_expense(self, args):
+        '''Function to delete expense'''
+        data = load_expense(self.file_path)
+
+        if data:
+            if str(args.id) in data:
+                del data[str(args.id)] # Delete expense
+                save_expense(self.file_path, data)
+                print(f"Expense successfully eliminated id: {args.id}")
+            else:
+                print(f"There are no expenses with the id: {args.id}")        
+        else:
+            print("There are no expenses to delete")
     
     def list_expenses(self):
         '''Function to list all expenses'''
