@@ -30,3 +30,12 @@ def is_text(args):
         return False
     except ValueError:
         return True
+
+def is_number(args):
+    '''Function to verify that the expense passed by the user is not negative number.'''
+    num = args.amount
+    if num < 0:
+        print("You cannot add negative amounts")
+        return False
+    else:
+        return True
