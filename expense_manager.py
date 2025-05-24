@@ -76,3 +76,33 @@ class ExpenseManager:
             print(f"Total expenses: {summary}")
         else:
             print("There are no expenses to summary")
+    
+    def summary_expense_for_month(self, args):
+        '''Function to summary expense for month'''
+        data = load_expense(self.file_path)
+        months = {1: 'January', 2: 'February', 3: 'March', 4: 'April',
+                  5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 
+                  10: 'October', 11: 'November', 12: 'December'
+                  }
+
+        if data:
+            amounts = []
+            summary = 0
+
+            for key, value in data.items():
+                month = value['date']
+
+                if month[6:7] == str(args.month):
+                    amounts.append(float(value['amount']))
+                     
+            summary = sum(amounts)
+
+            for key, value in months.items():
+                if key == int(args.month):
+                    mont = value
+                else:
+                    print("Enter a valid month")
+                    return
+            print(f"Total expenses for {mont}: {summary}")
+        else:
+            print("There are no expenses to summary")

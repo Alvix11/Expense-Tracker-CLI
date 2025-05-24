@@ -13,6 +13,6 @@ elif args.command == "delete":
     expense.delete_expense(args)
 elif args.command == "summary":
     if args.month:
-        print(f"sumar mes {args.month}")
+        expense.summary_expense_for_month(args)
     else:
         expense.summary_expense()
