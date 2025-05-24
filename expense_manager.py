@@ -60,3 +60,19 @@ class ExpenseManager:
                 print(f"{'#':<1} {key:<3} {value.get('date',''):<12} {value.get('description',''):<16} {value.get('amount',''):<6}")
         else:
             print("There are no expenses to show")
+
+    def summary_expense(self):
+        '''Function to summary expense'''
+        data = load_expense(self.file_path)
+
+        if data:
+            amounts = []
+            summary = 0
+
+            for key, value in data.items():
+                amounts.append(float(value['amount']))
+
+            summary = sum(amounts)
+            print(f"Total expenses: {summary}")
+        else:
+            print("There are no expenses to summary")

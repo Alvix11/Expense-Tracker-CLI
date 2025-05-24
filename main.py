@@ -15,4 +15,4 @@ elif args.command == "summary":
     if args.month:
         print(f"sumar mes {args.month}")
     else:
-        print("suma general")
+        expense.summary_expense()
