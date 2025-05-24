@@ -12,10 +12,10 @@ def get_parser():
     # Subcommand add
     add = subparser.add_parser("add", help="Add a new expense")
     add.add_argument("--description", type=str, required=True, help="Expense description")
-    add.add_argument("--amount", type=int, required=True, help="Amount expense")
+    add.add_argument("--amount", type=float, required=True, help="Amount expense")
 
     # Subcommand list
-    list_cmd = subparser.add_parser("list", help="List expenses")
+    list = subparser.add_parser("list", help="List expenses")
 
     # Subcommand delete
     delete = subparser.add_parser("delete", help="Delete an expense")
