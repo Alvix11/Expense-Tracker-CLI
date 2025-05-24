@@ -100,9 +100,11 @@ class ExpenseManager:
             for key, value in months.items():
                 if key == int(args.month):
                     mont = value
+
                 else:
                     print("Enter a valid month")
                     return
+                
             print(f"Total expenses for {mont}: {summary}")
         else:
             print("There are no expenses to summary")
