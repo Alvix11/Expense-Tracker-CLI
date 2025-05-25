@@ -22,7 +22,7 @@ class ExpenseManager:
                     "amount": str(args.amount)
                 }
                 save_expense(self.file_path, data)
-                print(f"Expense added with id: {id}")
+                print(f"Expense added with id: ({id})")
 
             else:
                 datas[str(id)] = {
@@ -31,7 +31,28 @@ class ExpenseManager:
                     "amount": str(args.amount)
                 }
                 save_expense(self.file_path, datas)
-                print(f"Expense created with id: {id}")
+                print(f"Expense created with id: ({id})")
+
+    def update_expense(self, args):
+        '''Function to update expense'''
+        data = load_expense(self.file_path)
+        present_date = actual_date_and_time()
+
+        if is_text(args) and is_positive(args, mode="amount") and is_positive(args, mode="id"):
+            if data:
+                if str(args.id) in data:
+                    data[str(args.id)] = {
+                        "date": str(present_date),
+                        "description": str(args.description),
+                        "amount": str(args.amount)
+                    }
+                    save_expense(self.file_path, data)
+                    print(f"Expense updated with id: ({args.id})")
+                else:
+                    print(f"There are no expenses with this id: ({args.id})")
+            else:
+                print("There are no expenses to update")
+
 
     def delete_expense(self, args):
         '''Function to delete expense'''
@@ -44,7 +65,7 @@ class ExpenseManager:
                     save_expense(self.file_path, data)
                     print(f"Expense successfully eliminated id: {args.id}")
                 else:
-                    print(f"There are no expenses with the id: {args.id}")        
+                    print(f"There are no expenses with the id: ({args.id})")        
         else:
             print("There are no expenses to delete")
     
