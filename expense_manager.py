@@ -37,7 +37,7 @@ class ExpenseManager:
         data = load_expense(self.file_path)
         present_date = actual_date_and_time()
 
-        if is_text(args) and is_positive(args, mode="amount") and is_positive(args, mode="id"):
+        if is_positive(args, mode="id") and is_text(args) and is_positive(args, mode="amount"):
             if data:
                 if str(args.id) in data:
                     data[str(args.id)] = {
