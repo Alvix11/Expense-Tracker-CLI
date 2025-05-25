@@ -66,13 +66,13 @@ class ExpenseManager:
         data = load_expense(self.file_path)
 
         if data:
-            amounts = []
-            summary = 0
+            amounts = [] # List to store the amounts
+            summary = 0 # Variable starting at zero that will contain the sum of expenses
 
             for key, value in data.items():
-                amounts.append(float(value['amount']))
+                amounts.append(float(value['amount'])) # The amounts are added to the list and converted to float
 
-            summary = sum(amounts)
+            summary = sum(amounts) # Sum of amounts
             print(f"Total expenses: {summary}")
         else:
             print("There are no expenses to summary")
@@ -83,28 +83,29 @@ class ExpenseManager:
         months = {1: 'January', 2: 'February', 3: 'March', 4: 'April',
                   5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 
                   10: 'October', 11: 'November', 12: 'December'
-                  }
+                  } # Dictionary of months
 
         if data:
             amounts = []
             summary = 0
 
-            for key, value in data.items():
-                month = value['date']
+            if int(args.month) in months: # It is verified that the month passed by the user exists in the dictionary
 
-                if month[6:7] == str(args.month):
-                    amounts.append(float(value['amount']))
-                     
-            summary = sum(amounts)
+                for key, value in data.items():
+                    month = value['date'] # The date traveled in the loop is saved and
 
-            if int(args.month) in months:
+                    if month[6:7] == str(args.month):  # compares it to the date passed by the user
+                        amounts.append(float(value['amount']))
+
+                summary = sum(amounts) # Sum of amounts
+
                 for key, value in months.items():
                 
-                    if key == int(args.month):
-                        mont = value
-                    
-                        print(f"Total expenses for {mont}: {summary}")
+                    if key == int(args.month): # Verify that the password for the month is the same as the user's last month.
+                        month_value = value               
+                        print(f"Total expenses for {month_value}: {summary}")
+                        return
             else:
-                    print("Enter a valid month")
+                print("Enter a valid month")
         else:
             print("There are no expenses to summary")
