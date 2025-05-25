@@ -4,11 +4,10 @@ def load_expense(file_path):
     '''Function to load expenses'''
     if verify_create_json(file_path):
         data = read_json(file_path)
-        if data:
-            return data
-        else:
-            return {}
-        
+        return data
+    else:
+        return {} 
+    
 def save_expense(file_path, data):
     '''Function to save expenses'''
     try:
