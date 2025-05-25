@@ -7,7 +7,6 @@ class ExpenseManager:
 
     def add_expense(self, args):
         '''Function to add new expenses'''
-        datas = {} # Dictionary to be used in case the json file does not exist
         id = 1 # ID to be used in case the json file does not exist
         data = load_expense(self.file_path)
         present_date = actual_date_and_time()
@@ -25,12 +24,12 @@ class ExpenseManager:
                 print(f"Expense added with id: ({id})")
 
             else:
-                datas[str(id)] = {
+                data[str(id)] = {
                     "date": str(present_date),
                     "description": str(args.description),
                     "amount": str(args.amount)
                 }
-                save_expense(self.file_path, datas)
+                save_expense(self.file_path, data)
                 print(f"Expense created with id: ({id})")
 
     def update_expense(self, args):
