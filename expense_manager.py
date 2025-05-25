@@ -109,7 +109,7 @@ class ExpenseManager:
             amounts = []
             summary = 0
 
-            if int(args.month) in months: # It is verified that the month passed by the user exists in the dictionary
+            if args.month in months: # It is verified that the month passed by the user exists in the dictionary
 
                 for key, value in data.items():
                     month = value['date'] # The date traveled in the loop is saved and
@@ -121,7 +121,7 @@ class ExpenseManager:
 
                 for key, value in months.items():
                 
-                    if key == int(args.month): # Verify that the month is the same as the one the user passed through
+                    if key == args.month: # Verify that the month is the same as the one the user passed through
                         month_value = value               
                         print(f"Total expenses for {month_value}: {summary}")
                         return
