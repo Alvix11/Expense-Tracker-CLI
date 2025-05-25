@@ -14,6 +14,12 @@ def get_parser():
     add.add_argument("--description", type=str, required=True, help="Expense description")
     add.add_argument("--amount", type=float, required=True, help="Amount expense")
 
+    # Subcommand update
+    update = subparser.add_parser("update", help="Update at expense")
+    update.add_argument("--id", type=int, required=True, help="Id expense")
+    update.add_argument("--description", type=str, required=True, help="Expense description")
+    update.add_argument("--amount", type=float, help="Amount expense")
+
     # Subcommand list
     list = subparser.add_parser("list", help="List expenses")
 
