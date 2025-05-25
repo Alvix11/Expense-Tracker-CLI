@@ -121,7 +121,7 @@ class ExpenseManager:
 
                 for key, value in months.items():
                 
-                    if key == int(args.month): # Verify that the password for the month is the same as the user's last month.
+                    if key == int(args.month): # Verify that the month is the same as the one the user passed through
                         month_value = value               
                         print(f"Total expenses for {month_value}: {summary}")
                         return
