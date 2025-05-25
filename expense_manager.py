@@ -74,10 +74,10 @@ class ExpenseManager:
 
         if data: 
             # We display the expenses with customized formatting with colors (ANSI Escape Codes)
-            print(f"{'#':<1} {'ID':<3} {'Date':<12} {'Description':<16} {'Amount':<6}")
+            print(f"{'ID':<3} {'Date':<12} {'Description':<16} {'Amount':<6}")
             print("-" * 48)
             for key, value in data.items():
-                print(f"{'#':<1} {key:<3} {value.get('date',''):<12} {value.get('description',''):<16} {value.get('amount',''):<6}")
+                print(f"{key:<3} {value.get('date',''):<12} {value.get('description',''):<16} {value.get('amount',''):<6}")
         else:
             print("There are no expenses to show")
 
