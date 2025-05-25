@@ -63,7 +63,7 @@ class ExpenseManager:
                 if str(args.id) in data:
                     del data[str(args.id)] # Delete expense
                     save_expense(self.file_path, data)
-                    print(f"Expense successfully eliminated id: {args.id}")
+                    print(f"Expense successfully eliminated id: ({args.id})")
                 else:
                     print(f"There are no expenses with the id: ({args.id})")        
         else:
