@@ -1,6 +1,7 @@
 # Expense Tracker
 
 A simple command-line Expense Tracker application written in Python. This tool allows you to add, update, delete, list, and summarize your expenses, storing all data in a JSON file.
+
 It is inspired from the Expense Tracker project https://roadmap.sh/projects/expense-tracker featured in the Backend Roadmap from roadmap.sh.
 
 ## Features
