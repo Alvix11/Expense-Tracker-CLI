@@ -84,6 +84,11 @@ expense-tracker/
 - `expense-tracker.py`: Entry point for the application.
 - `expense.json`: Data storage file.
 
+## Notes
+
+- The `expense.json` file is automatically created when you add your first expense.  
+- This file is not tracked by git (`.gitignore`) to avoid committing personal data.
+
 ## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
